@@ -27,7 +27,7 @@
   --pt: calc(306 / 393);
   /* The strip: every card is one 420px slice of a single backdrop. */
   --card-w: 420px;
-  --cards: 5;
+  --cards: 6;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,14 +42,24 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* The cards in one row, the way the App Store strip shows them; chrome.js
-   zooms the row to fit the window. */
-.cards { display: flex; gap: 20px; padding: 0 24px; }
+/* The cards in one row at full size, scrolling sideways the way the App
+   Store strip does, each card snapping into place. */
+.cards {
+  display: flex;
+  width: 100vw;
+  gap: 20px;
+  padding: 0 24px 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 24px;
+  scrollbar-color: #2a2a2d transparent;
+}
+.cards > .card { scroll-snap-align: start; }
 
 /* #plans, #refusals, ...: one card alone and full-bleed, the frame the
    1290x2796 PNG export renders. */
 body:has(.card:target) { padding: 0; place-items: start; }
-.cards:has(.card:target) { padding: 0; zoom: 1 !important; }
+.cards:has(.card:target) { padding: 0; overflow: hidden; }
 .cards:has(.card:target) .card:not(:target) { display: none; }
 .card:target { border: 0; border-radius: 0; }
 

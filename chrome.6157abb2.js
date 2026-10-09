@@ -79,15 +79,19 @@
     );
   }
 
-  // Fit the whole strip in the window; a single #card view stays at 1x.
+  // The strip scrolls sideways at full size, like the App Store's. A mouse
+  // wheel's vertical turn moves it sideways too, until it reaches either end.
   const strip = document.querySelector(".cards");
-  const fit = () => {
-    strip.style.zoom = "";
-    if (location.hash) return;
-    const scale = Math.min(1, (window.innerWidth - 16) / strip.scrollWidth);
-    strip.style.zoom = String(scale);
-  };
-  fit();
-  window.addEventListener("resize", fit);
-  window.addEventListener("hashchange", fit);
+  strip.addEventListener(
+    "wheel",
+    (event) => {
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+      const atStart = strip.scrollLeft <= 0 && event.deltaY < 0;
+      const atEnd = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 1 && event.deltaY > 0;
+      if (atStart || atEnd) return;
+      event.preventDefault();
+      strip.scrollBy({ left: event.deltaY });
+    },
+    { passive: false },
+  );
 })();
