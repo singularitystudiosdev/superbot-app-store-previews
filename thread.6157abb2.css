@@ -22,14 +22,14 @@
 .desk svg { display: block; flex: none; }
 
 /* .hub-feed (hub-chat.css:99-121, 199-207): 16px padding, 12px between rows,
-   the 24px top scroll-edge fade and no bottom fade; it ends where the
-   composer row starts and never runs under it. */
+   the 24px top scroll-edge fade and no bottom fade; it ends 8px above the
+   composer and never runs under it. */
 .hub-feed {
   position: absolute;
   top: 108px;
   left: 0;
   right: 0;
-  bottom: 128px;
+  bottom: 136px;
   display: flex;
   flex-direction: column;
   padding: 16px;
