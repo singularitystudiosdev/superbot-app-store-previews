@@ -1,0 +1,282 @@
+/* One settled Superbot desktop thread turn at iPhone width, as superbot-desktop
+   origin/main (c8a287dc1) renders it. Values are the token literals
+   (packages/tokens/tokens/*.json) and the component classes named per block. */
+.desk {
+  --color-bg: #0d0d0d;
+  --color-raised: #1a1a1c;
+  --color-fg: #e6e8ee;
+  --color-fg-secondary: #c9ccd4;
+  --color-muted: #aeb1bc;
+  --color-line: #1e1e21;
+  --color-card: #0a0a0a;
+  --color-link: #2881e7;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --font-ui: "SF Pro Rounded", ui-rounded, Inter, system-ui, sans-serif;
+  /* font.bot active candidate ui-rounded-black: weight 900, leading 1.4. */
+  --font-bot: "SF Pro Rounded", ui-rounded, Inter, system-ui, sans-serif;
+  background: var(--color-bg);
+  font-family: var(--font-ui);
+  color: var(--color-fg);
+}
+.desk .status { font-family: -apple-system, "SF Pro Text", system-ui, sans-serif; }
+.desk svg { display: block; flex: none; }
+
+/* .hub-feed (hub-chat.css:99-109, 199-207): 16px padding, 12px between rows. */
+.hub-feed {
+  position: absolute;
+  top: 108px;
+  left: 0;
+  right: 0;
+  bottom: 86px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  overflow: hidden;
+  mask-image: linear-gradient(180deg, #000 calc(100% - 28px), transparent 100%);
+}
+.hub-feed > * + * { margin-top: 12px; }
+
+/* MessageRow bubble (message-row.tsx:599-627). */
+.msg-user { display: flex; justify-content: flex-end; padding: 2px 0; }
+.msg-bubble {
+  max-width: min(85%, 75ch);
+  padding: 4px 16px;
+  border-radius: 16px;
+  background: var(--color-raised);
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--color-fg);
+  overflow-wrap: anywhere;
+}
+
+/* TurnHead, settled (TurnHead.tsx:381-448, turn-head.css): 8 + 19 + 4 = 31px
+   box, avatar, name, " · " outcome. */
+.turn-head {
+  height: 31px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0 4px;
+  font-size: 13px;
+  line-height: 19px;
+}
+.turn-head-avatar { width: 24px; height: 24px; flex: none; }
+.turn-head-avatar img { width: 100%; height: 100%; display: block; }
+.turn-head-name { font-weight: 600; color: var(--color-fg); }
+.turn-head-meta { color: var(--color-muted); font-variant-numeric: tabular-nums; }
+
+/* ReasoningRow (reasoning-row.css:32-123): "Thought for Ns" disclosure and
+   the muted, rail-lined reasoning body. */
+.sb-disc { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.sb-disc-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 24px;
+  margin-left: -6px;
+  padding: 0 6px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  font: 400 13px/19px var(--font-ui);
+  color: var(--color-fg-secondary);
+  white-space: nowrap;
+}
+.sb-disc-chevron { width: 12px; height: 12px; color: var(--color-muted); }
+.sb-disc[data-open="true"] .sb-disc-chevron { transform: rotate(90deg); }
+.sb-reason-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 224px;
+  overflow: hidden;
+  padding-left: 12px;
+  border-left: 1px solid var(--color-line);
+  font: 400 13px/19px var(--font-ui);
+  color: var(--color-muted);
+}
+
+/* ProviderSwitch pill + nested steps (provider-switch.tsx:230-280, 780-830;
+   provider-switch.css:136-170): nest 35px, rail hairline at 17px. */
+.switch-block { display: flex; flex-direction: column; align-items: flex-start; }
+.sb-switch-pill {
+  display: inline-flex;
+  height: 32px;
+  max-width: 100%;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px 0 6px;
+  border: 1px solid var(--color-line);
+  border-radius: 9999px;
+  background: var(--color-raised);
+  font: 600 13px/19px var(--font-ui);
+  white-space: nowrap;
+}
+.sb-switch-tile { width: 20px; height: 20px; border-radius: 8px; overflow: hidden; flex: none; }
+.sb-switch-tile img { width: 100%; height: 100%; display: block; }
+.sb-switch-status { width: 16px; height: 16px; flex: none; color: var(--color-muted); }
+.sb-switch-status svg { width: 100%; height: 100%; }
+.sb-switch-nest {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 8px 0 0 35px;
+  list-style: none;
+}
+.sb-switch-nest::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  bottom: 0;
+  left: calc(17px - 35px - 0.5px);
+  width: 1px;
+  background: var(--color-line);
+}
+.sb-switch-step {
+  display: flex;
+  height: 20px;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+  font: 400 13px/19px var(--font-ui);
+  white-space: nowrap;
+}
+.sb-switch-step-glyph { display: grid; width: 20px; height: 20px; flex: none; place-items: center; color: var(--color-muted); }
+.sb-switch-step-glyph svg { width: 12px; height: 12px; }
+.sb-switch-step-text { display: flex; min-width: 0; align-items: baseline; gap: 8px; overflow: hidden; }
+.sb-switch-step-label { flex: none; color: var(--color-fg); }
+.sb-switch-step[data-state="done"] .sb-switch-step-label { color: var(--color-muted); }
+.sb-switch-step-detail { min-width: 0; overflow: hidden; text-overflow: ellipsis; font-size: 11px; line-height: 16px; color: var(--color-muted); }
+
+/* The who header under the answering switch (provider-switch.tsx:300-320):
+   tile, the target's label, muted "in superbot". */
+.sb-switch-who { display: flex; height: 20px; align-items: center; gap: 8px; white-space: nowrap; }
+.sb-switch-who img { width: 20px; height: 20px; border-radius: 8px; flex: none; }
+.sb-switch-who-label { font: 600 13px/19px var(--font-ui); color: var(--color-fg); }
+.sb-switch-who-caption { font: 500 11px/16px var(--font-ui); color: var(--color-muted); }
+
+/* StepLine, settled (step-line.tsx:181-229, step-line.css): 10px mark box
+   with a muted check, fg verb, muted target; folded chapter copy from
+   step-words.ts ("Wrote 14 files", "Ran 3 commands"). */
+.sb-lines { display: flex; flex-direction: column; gap: 4px; }
+.sb-line { display: flex; align-items: center; gap: 8px; font: 400 13px/19px var(--font-ui); }
+.sb-line-mark { display: grid; width: 10px; height: 10px; flex: none; place-items: center; color: var(--color-muted); }
+.sb-line-mark svg { width: 10px; height: 10px; }
+.sb-line-verb { color: var(--color-fg); }
+.sb-line-target { color: var(--color-muted); }
+
+/* MediaGrid, 2 pictures (media-grid.tsx:57-167, media-embed.tsx:174-192):
+   header line, then a 2-up square grid on the card ground with W×H specs. */
+.media-grid { display: flex; width: 100%; max-width: 560px; flex-direction: column; gap: 8px; }
+.media-head { display: flex; align-items: center; gap: 8px; font: 400 11px/16px var(--font-ui); }
+.media-head img { width: 16px; height: 16px; border-radius: 8px; flex: none; }
+.media-head-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--color-fg-secondary); }
+.media-head-meta { flex: none; font-family: var(--font-mono); color: var(--color-muted); font-variant-numeric: tabular-nums; }
+.media-surface {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  background: var(--color-card);
+}
+.media-cell { display: flex; min-width: 0; flex-direction: column; gap: 4px; }
+.media-tile { aspect-ratio: 1; overflow: hidden; border-radius: 8px; background: var(--color-raised); }
+.media-tile img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.media-cap { display: flex; min-width: 0; align-items: center; justify-content: space-between; gap: 8px; font: 400 11px/16px var(--font-ui); }
+.media-cap-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--color-fg-secondary); }
+.media-cap-spec { flex: none; font-family: var(--font-mono); color: var(--color-muted); font-variant-numeric: tabular-nums; }
+
+/* LinkGrid, one link: the card is a ROW (link-grid.tsx:150-245): 152px
+   16:10 page image left, source line and 2-line title right. */
+.link-card {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  background: var(--color-raised);
+}
+.link-media { position: relative; flex: none; width: 152px; aspect-ratio: 16 / 10; overflow: hidden; background: var(--color-raised); }
+.link-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.link-text { display: flex; flex: 1; min-width: 0; flex-direction: column; justify-content: center; gap: 4px; padding: 8px; }
+.link-source { display: flex; min-width: 0; align-items: center; gap: 6px; font: 400 11px/16px var(--font-ui); color: var(--color-muted); }
+.link-source img { width: 16px; height: 16px; border-radius: 8px; flex: none; }
+.link-title {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font: 400 13px/19px var(--font-ui);
+  color: var(--color-fg);
+}
+
+/* Answer prose: MessageRow prose + .bot-text (message-row.tsx:674,
+   styles.css:1295-1300); links in --color-link. */
+.answer { padding: 2px 0; font: 900 15px/1.4 var(--font-bot); letter-spacing: 0; color: var(--color-fg); }
+.answer a { color: var(--color-link); text-decoration: none; }
+
+/* VideoList (packages/ui video-list.tsx:83-164): 152px 16:9 media, play disc,
+   2-line title, caption meta. */
+.video-list { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.video-card {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  background: var(--color-raised);
+}
+.video-media { position: relative; flex: none; width: 152px; aspect-ratio: 16 / 9; overflow: hidden; background: var(--color-raised); }
+.video-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.video-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.video-play span {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgb(26 26 28 / 0.8);
+  color: var(--color-fg);
+}
+.video-text { display: flex; flex: 1; min-width: 0; flex-direction: column; justify-content: center; gap: 4px; padding: 8px; }
+.video-title {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font: 400 13px/19px var(--font-ui);
+  color: var(--color-fg);
+}
+.video-meta { font: 400 11px/16px var(--font-ui); color: var(--color-muted); }
+
+/* Composer (packages/ui composer.tsx:8179-8232, styles.css:1835, 2110-2123):
+   44px rounded-16 raised bar, "Ask anything", idle send disc. */
+.desk-composer {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 34px;
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px 0 4px;
+  border-radius: 16px;
+  background: var(--color-raised);
+}
+.bc-plus { display: grid; width: 28px; height: 28px; place-items: center; color: var(--color-muted); }
+.composer-placeholder { flex: 1; padding: 12px 8px; font: 400 13px/20px var(--font-ui); color: var(--color-muted); }
+.bc-send {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in oklch, var(--color-fg) 8%, transparent);
+  color: #5c5f68;
+}

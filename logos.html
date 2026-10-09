@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Genie icon variants</title>
+<link rel="icon" href="art/genie-logo-1.png" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    padding: 40px 32px;
+    background: #0d0d0d;
+    color: #e6e8ee;
+    font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+  }
+  h1 { font-size: 22px; font-weight: 600; }
+  p { margin-top: 6px; color: #aeb1bc; font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 24px; margin-top: 28px; }
+  figure { padding: 18px; border: 1px solid #1e1e21; border-radius: 20px; background: #141416; }
+  figure.current { border-color: #3a3b40; }
+  /* The icon at App Store size under the iOS squircle radius (22.37%),
+     then at home-screen size on a dark wallpaper. */
+  .big { display: block; width: 100%; aspect-ratio: 1; border-radius: 22.37%; }
+  .row { display: flex; align-items: center; gap: 14px; margin-top: 14px; }
+  .small { width: 60px; height: 60px; border-radius: 22.37%; }
+  .tiny { width: 29px; height: 29px; border-radius: 22.37%; }
+  figcaption { margin-top: 12px; font-size: 15px; font-weight: 600; }
+  figcaption span { display: block; margin-top: 2px; font-size: 13px; font-weight: 400; color: #aeb1bc; }
+</style>
+</head>
+<body>
+  <h1>Genie icon, variants of icon 2</h1>
+  <p>Nano Banana 2 (fal.ai). Each shown at App Store size, home-screen size and settings size.</p>
+  <div class="grid" id="grid"></div>
+  <script>
+    const ICONS = [
+      ["art/genie-logo-2.png", "Original", "the first icon 2, for comparison", true],
+      ["art/variants/genie-v1-refined-flat.png", "1 · Refined flat", "subtle shading, crisp highlight, long shadow"],
+      ["art/variants/genie-v2-soft-3d.png", "2 · Soft 3D", "matte clay, studio light"],
+      ["art/variants/genie-v3-glass.png", "3 · Glass (card logo 1, app icon)", "translucent violet glass, inner mist"],
+      ["art/variants/genie-v4-glow.png", "4 · Glow (card logo 2)", "violet aura, twinkling stars"],
+      ["art/variants/genie-v5-brand-gradient.png", "5 · Brand gradient", "blue to purple to pink ground"],
+      ["art/variants/genie-v6-tilted.png", "6 · Tilted", "playful tilt, bold shapes"],
+    ];
+    const grid = document.getElementById("grid");
+    for (const [src, name, note, current] of ICONS) {
+      const figure = document.createElement("figure");
+      if (current) figure.className = "current";
+      figure.innerHTML =
+        `<img class="big" src="${src}" alt="" />` +
+        `<div class="row"><img class="small" src="${src}" alt="" /><img class="tiny" src="${src}" alt="" /></div>` +
+        "<figcaption></figcaption>";
+      figure.querySelector("figcaption").innerHTML = `${name}<span></span>`;
+      figure.querySelector("figcaption span").textContent = note;
+      grid.append(figure);
+    }
+  </script>
+</body>
+</html>
