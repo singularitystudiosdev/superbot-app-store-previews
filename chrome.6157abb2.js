@@ -28,12 +28,42 @@
 
   const CHEVRON = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#a8a8a8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
 
+  // The desktop thread composer, idle, as superbot-desktop origin/main draws it
+  // for a superbot chat (packages/ui composer.tsx layout="stacked"): the field
+  // row, then the controls row at the compaction level a 361px column lands on
+  // (level 7: the SUPER chevron and the mode segment fold away). Icons are the
+  // composer's own 12-grid glyphs, lucide Sparkle and Mic.
+  const COMPOSER = `
+    <div class="hub-composer-row" aria-hidden="true">
+      <div class="hub-composer">
+        <div class="composer">
+          <div class="composer-input-row"><span class="composer-placeholder">How can superbot help you today?</span></div>
+          <div class="composer-controls">
+            <div class="composer-controls-left">
+              <span class="bc-plus"><svg class="cl-ic" viewBox="0 0 12 12"><path d="M6 1.5v9M1.5 6h9"/></svg></span>
+              <span class="bc-super">
+                <span class="bc-super-cap"><svg class="bc-super-spark" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg></span>
+                <span class="bc-super-tag"><span class="bc-super-tag-word">Auto</span></span>
+              </span>
+            </div>
+            <div class="composer-controls-right">
+              <span class="bc-plat"><img class="bc-platglitch" src="art/superbot-glitch-face.svg" alt="" />superbot<svg class="cl-ic" viewBox="0 0 12 12"><path d="M3 4.5 6 7.5 9 4.5"/></svg></span>
+              <span class="bc-computer"><svg class="cl-ic" viewBox="0 0 12 12"><rect x="1.5" y="2" width="9" height="6" rx="1"/><path d="M4 10.5h4M6 8v2.5"/></svg></span>
+              <span class="bc-mic"><svg class="cl-ic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></svg></span>
+              <span class="bc-send"><svg class="cl-ic" viewBox="0 0 12 12"><path d="M6 10V2M2.5 5.5 6 2l3.5 3.5"/></svg></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
   for (const phone of document.querySelectorAll(".phone")) {
     const native = phone.querySelector(".native");
     native.insertAdjacentHTML("afterbegin", STATUS + header());
     const title = native.querySelector(".header-title");
     title.textContent = phone.dataset.title;
     title.insertAdjacentHTML("beforeend", CHEVRON);
+    if (native.classList.contains("desk")) native.insertAdjacentHTML("beforeend", COMPOSER);
     native.insertAdjacentHTML("beforeend", '<div class="home" aria-hidden="true"></div>');
 
     const screen = document.createElement("div");

@@ -21,18 +21,20 @@
 .desk .status { font-family: -apple-system, "SF Pro Text", system-ui, sans-serif; }
 .desk svg { display: block; flex: none; }
 
-/* .hub-feed (hub-chat.css:99-109, 199-207): 16px padding, 12px between rows. */
+/* .hub-feed (hub-chat.css:99-121, 199-207): 16px padding, 12px between rows,
+   the 24px top scroll-edge fade and no bottom fade; it ends where the
+   composer row starts and never runs under it. */
 .hub-feed {
   position: absolute;
   top: 108px;
   left: 0;
   right: 0;
-  bottom: 86px;
+  bottom: 128px;
   display: flex;
   flex-direction: column;
   padding: 16px;
   overflow: hidden;
-  mask-image: linear-gradient(180deg, #000 calc(100% - 28px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 24px, #000 100%);
 }
 .hub-feed > * + * { margin-top: 12px; }
 
@@ -149,12 +151,10 @@
 .sb-switch-step[data-state="done"] .sb-switch-step-label { color: var(--color-muted); }
 .sb-switch-step-detail { min-width: 0; overflow: hidden; text-overflow: ellipsis; font-size: 11px; line-height: 16px; color: var(--color-muted); }
 
-/* The who header under the answering switch (provider-switch.tsx:300-320):
-   tile, the target's label, muted "in superbot". */
-.sb-switch-who { display: flex; height: 20px; align-items: center; gap: 8px; white-space: nowrap; }
-.sb-switch-who img { width: 20px; height: 20px; border-radius: 8px; flex: none; }
-.sb-switch-who-label { font: 600 13px/19px var(--font-ui); color: var(--color-fg); }
-.sb-switch-who-caption { font: 500 11px/16px var(--font-ui); color: var(--color-muted); }
+/* A settled, folded switch block (ProviderSwitchBlock collapsible,
+   provider-switch.tsx:272-280): the pill carries the fold's 12px muted
+   chevron and its nest (who header, steps) stays tucked away. */
+.sb-switch-details-chevron { width: 12px; height: 12px; flex: none; fill: none; stroke: var(--color-muted); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* StepLine, settled (step-line.tsx:181-229, step-line.css): 10px mark box
    with a muted check, fg verb, muted target; folded chapter copy from
@@ -254,23 +254,85 @@
 }
 .video-meta { font: 400 11px/16px var(--font-ui); color: var(--color-muted); }
 
-/* Composer (packages/ui composer.tsx:8179-8232, styles.css:1835, 2110-2123):
-   44px rounded-16 raised bar, "Ask anything", idle send disc. */
-.desk-composer {
+/* Composer, idle, superbot chat (packages/ui composer.tsx:8179-8712 stacked
+   layout; styles.css .bc-*; hub-chat.css .hub-composer*). The row pads it
+   16px off the column; the ring is the Tide variant at rest (a 1px accent
+   hairline at 30%), and the rest scrim washes the bar 40% toward the canvas
+   until it is focused. */
+.hub-composer-row { position: absolute; left: 0; right: 0; bottom: 26px; padding: 0 16px 8px; }
+.hub-composer { position: relative; isolation: isolate; border-radius: 16px; }
+.hub-composer::before {
+  content: "";
   position: absolute;
-  left: 16px;
-  right: 16px;
-  bottom: 34px;
+  inset: 0;
+  z-index: 1;
+  padding: 1px;
+  border-radius: inherit;
+  background: #2b6bff;
+  opacity: 0.3;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.hub-composer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  background: color-mix(in oklch, var(--color-bg) 40%, transparent);
+  pointer-events: none;
+}
+.composer {
   display: flex;
   min-height: 44px;
-  align-items: center;
+  flex-direction: column;
   gap: 4px;
-  padding: 0 8px 0 4px;
+  padding: 0 4px;
+  border: 1px solid transparent;
   border-radius: 16px;
   background: var(--color-raised);
 }
-.bc-plus { display: grid; width: 28px; height: 28px; place-items: center; color: var(--color-muted); }
-.composer-placeholder { flex: 1; padding: 12px 8px; font: 400 13px/20px var(--font-ui); color: var(--color-muted); }
+.composer-input-row { display: flex; min-height: 44px; align-items: flex-end; }
+.composer-placeholder { padding: 12px 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 400 13px/20px var(--font-ui); color: var(--color-muted); }
+.composer-controls { display: flex; min-height: 44px; align-items: center; justify-content: space-between; gap: 8px; padding: 0 6px 0 8px; }
+.composer-controls-left, .composer-controls-right { display: flex; align-items: center; gap: 8px; }
+.cl-ic { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.bc-plus { display: grid; height: 28px; padding: 0 4px; place-items: center; border-radius: 6px; color: var(--color-muted); }
+
+/* SUPER pill, unarmed, folded (level 7): the sparkle cap and the mode word. */
+.bc-super { display: inline-flex; height: 28px; align-items: stretch; border-radius: 999px; font: 500 13px/1 var(--font-ui); color: var(--color-fg); }
+.bc-super-cap { display: grid; width: 34px; place-items: center; border-radius: 999px 0 0 999px; background: color-mix(in oklch, var(--color-fg) 8%, transparent); }
+.bc-super-spark { width: 14px; height: 14px; fill: currentColor; color: var(--color-muted); opacity: 0.7; }
+.bc-super-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px 0 10px;
+  border: 1px solid var(--color-line-strong);
+  border-left: none;
+  border-radius: 0 999px 999px 0;
+  background: color-mix(in oklch, var(--color-fg) 3%, transparent);
+}
+
+/* Model pill: the bare glitch face, the "superbot" wordmark, its chevron. */
+.bc-plat { display: inline-flex; height: 28px; align-items: center; gap: 5px; padding: 0 6px; border-radius: 6px; font: 400 11px/16px var(--font-ui); color: var(--color-muted); white-space: nowrap; }
+.bc-platglitch { width: 16px; height: 16px; flex: none; }
+.bc-computer { display: grid; width: 28px; height: 28px; place-items: center; color: var(--color-muted); }
+.bc-mic {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  box-sizing: border-box;
+  border: 1px solid color-mix(in oklch, var(--color-fg) 8%, transparent);
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--color-fg) 6%, transparent);
+  color: var(--color-muted);
+}
+.bc-mic .cl-ic { stroke-width: 1.6; }
+
+/* Send, empty draft (._wait): the grey disc and the line-control arrow. */
 .bc-send {
   display: grid;
   width: 28px;
@@ -278,5 +340,6 @@
   place-items: center;
   border-radius: 50%;
   background: color-mix(in oklch, var(--color-fg) 8%, transparent);
-  color: #5c5f68;
+  color: #6b6f76;
 }
+.bc-send .cl-ic { stroke-width: 1.6; }
