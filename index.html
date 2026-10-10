@@ -3,206 +3,58 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Superbot · App Store previews</title>
-<link rel="icon" href="superbot-favicon.svg" />
-<link rel="stylesheet" href="preview.6157abb2.css" />
-<link rel="stylesheet" href="thread.6157abb2.css" />
+<title>Superbot App Store assets</title>
+<link rel="icon" href="assets/favicon.svg" />
+<!-- The published asset set: the App Store header banner and the five
+     iPhone screenshots (purple headline accent), each downloadable, plus
+     one zip of all six. -->
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #f5f5f7;
+    font: 15px/1.47 -apple-system, system-ui, "Helvetica Neue", sans-serif;
+    color: #1d1d1f;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 1500px; margin: 0 auto; padding: 48px 32px 96px; }
+  .top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 32px; }
+  h1 { font-size: 28px; line-height: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  h2 { margin: 48px 0 16px; font-size: 17px; line-height: 22px; font-weight: 700; }
+  .zip, .get { color: #0066cc; text-decoration: none; font-weight: 600; }
+  .zip { padding: 8px 16px; border-radius: 999px; background: #0071e3; color: #fff; }
+  .zip:hover { background: #0077ed; }
+  .get:hover { text-decoration: underline; }
+  .header img { display: block; width: 100%; height: auto; border-radius: 12px; }
+  .meta { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; font-size: 13px; color: #6e6e73; }
+  .shots { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; list-style: none; }
+  .shots img { display: block; width: 100%; height: auto; border-radius: 12.8% / 5.7%; }
+  @media (max-width: 900px) { .shots { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
 </head>
 <body>
-  <!-- One App Store strip. Each card declares its headline and its screen
-       (.native); chrome.6157abb2.js adds the device frame, status bar and
-       chat header (data-title). -->
-  <main class="cards">
-    <section class="card" id="plans" style="--i: 0" aria-label="Your Plans preview">
-      <h1 class="headline">Your <span class="grad">Plans</span></h1>
-      <div class="phone" data-title="New chat">
-        <div class="native">
-          <section class="sheet" role="dialog" aria-label="Add a credential">
-            <div class="grabber" aria-hidden="true"></div>
-            <h2 class="sheet-title">Add a credential
-              <svg class="sheet-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>
-            </h2>
-            <div class="search" aria-hidden="true">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
-              Search providers
-            </div>
-            <ul class="group" id="providers" role="list"></ul>
-            <div class="group custom">
-              <div class="row">
-                <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3.5"/><path d="M12 11v9l-1.5-1.2M12 16.5h1.5"/></svg>
-                </span>
-                <span class="label"><strong>Custom credential</strong></span>
-                <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
+  <main>
+    <div class="top">
+      <h1>Superbot App Store assets</h1>
+      <a class="zip" href="assets/superbot-app-store-assets.zip" download>Download all (.zip)</a>
+    </div>
+
+    <section class="header" aria-labelledby="header-title">
+      <h2 id="header-title">Header</h2>
+      <img src="assets/superbot-header.png" alt="Superbot App Store header: icon, name, subtitle and Share on a purple sheen" width="3000" height="572" />
+      <p class="meta"><span>superbot-header.png · 3000 × 572</span><a class="get" href="assets/superbot-header.png" download>Download</a></p>
     </section>
 
-    <section class="card" id="refusals" style="--i: 1" aria-label="Less refusals preview">
-      <h1 class="headline">Less <span class="grad">refusals</span></h1>
-      <div class="phone" data-title="MrBeast videos">
-        <div class="native desk">
-          <div class="hub-feed" role="log" aria-label="MrBeast videos">
-            <div class="msg-user"><span class="msg-bubble">Download all videos on https://www.youtube.com/@MrBeast</span></div>
-            <div class="turn-head">
-              <span class="turn-head-avatar"><img src="superbot-favicon.svg" alt="" /></span>
-              <span><span class="turn-head-name">superbot</span><span class="turn-head-meta"> · 3h 12m 40s</span></span>
-            </div>
-            <div class="sb-disc" data-open="true">
-              <button class="sb-disc-trigger" type="button" aria-expanded="true">
-                <span class="sb-disc-label">Thought for 6s</span>
-                <svg class="sb-disc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-              </button>
-              <div class="sb-reason-body">
-                <p>They want every video on @MrBeast, not a sample. The uploads playlist lists all 1,005, so download each at the best quality it has, newest first, and name the files by upload date.</p>
-              </div>
-            </div>
-            <div class="switch-block">
-              <span class="sb-switch-pill">
-                <span class="sb-switch-tile"><img src="logos/youtube.jpg" alt="" /></span>
-                <span class="sb-switch-label">Connected to YouTube</span>
-                <span class="sb-switch-status" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-              </span>
-              <ol class="sb-switch-nest">
-                <li class="sb-switch-step" data-state="done">
-                  <span class="sb-switch-step-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-                  <span class="sb-switch-step-text"><span class="sb-switch-step-label">Opened YouTube</span><span class="sb-switch-step-detail">youtube.com/@MrBeast/videos</span></span>
-                </li>
-                <li class="sb-switch-step" data-state="done">
-                  <span class="sb-switch-step-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-                  <span class="sb-switch-step-text"><span class="sb-switch-step-label">Read the YouTube page</span><span class="sb-switch-step-detail">1,005 videos</span></span>
-                </li>
-                <li class="sb-switch-step" data-state="done">
-                  <span class="sb-switch-step-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-                  <span class="sb-switch-step-text"><span class="sb-switch-step-label">Downloaded 1,005 videos</span><span class="sb-switch-step-detail">googlevideo.com</span></span>
-                </li>
-              </ol>
-            </div>
-            <div class="answer"><p>Downloaded all 1,005 videos from @MrBeast at the best quality each one has, newest first, to Downloads/MrBeast videos.</p></div>
-            <div class="video-list" role="list"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" id="bullshit" style="--i: 2" aria-label="No bullsh*t preview">
-      <h1 class="headline">No <span class="grad">bullsh*t</span></h1>
-      <div class="phone" data-title="Favorite color">
-        <div class="native desk">
-          <div class="hub-feed" role="log" aria-label="Favorite color">
-            <div class="msg-user"><span class="msg-bubble">Whats your favorite color?</span></div>
-            <div class="turn-head">
-              <span class="turn-head-avatar"><img src="superbot-favicon.svg" alt="" /></span>
-              <span><span class="turn-head-name">superbot</span><span class="turn-head-meta"> · 1s</span></span>
-            </div>
-            <div class="answer"><p>Black</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" id="direct" style="--i: 3" aria-label="Direct Answers preview">
-      <h1 class="headline">Direct <span class="grad">Answers</span></h1>
-      <div class="phone" data-title="Favorite color">
-        <div class="native desk">
-          <div class="hub-feed" role="log" aria-label="Favorite color">
-            <div class="msg-user"><span class="msg-bubble">Whats your favorite color?</span></div>
-            <div class="turn-head">
-              <span class="turn-head-avatar"><img src="superbot-favicon.svg" alt="" /></span>
-              <span><span class="turn-head-name">superbot</span><span class="turn-head-meta"> · 1s</span></span>
-            </div>
-            <div class="answer"><p>Black</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" id="models" style="--i: 4" aria-label="Switches Models preview">
-      <h1 class="headline">Switches <span class="grad">Models</span></h1>
-      <div class="phone" data-title="My app">
-        <div class="native desk">
-          <div class="hub-feed" role="log" aria-label="My app">
-            <div class="msg-user"><span class="msg-bubble">Make me a logo for my app</span></div>
-            <div class="turn-head">
-              <span class="turn-head-avatar"><img src="superbot-favicon.svg" alt="" /></span>
-              <span><span class="turn-head-name">superbot</span><span class="turn-head-meta"> · 14s</span></span>
-            </div>
-            <div class="switch-block">
-              <span class="sb-switch-pill">
-                <span class="sb-switch-tile"><img src="logos/tile-google.png" alt="" /></span>
-                <span class="sb-switch-label">Switched to Nano Banana 2</span>
-                <span class="sb-switch-status" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-                <svg class="sb-switch-details-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-              </span>
-            </div>
-            <figure class="media-grid">
-              <figcaption class="media-head"><img src="logos/tile-google.png" alt="" /><span class="media-head-label">via Superbot · Nano Banana 2</span><span class="media-head-meta">2 images</span></figcaption>
-              <div class="media-surface">
-                <figure class="media-cell">
-                  <div class="media-tile"><img src="art/variants/genie-v3-glass.png" alt="Genie logo, glass" /></div>
-                  <figcaption class="media-cap"><span class="media-cap-label">via Superbot · Nano Banana 2</span><span class="media-cap-spec">1024×1024</span></figcaption>
-                </figure>
-                <figure class="media-cell">
-                  <div class="media-tile"><img src="art/variants/genie-v4-glow.png" alt="Genie logo, glow" /></div>
-                  <figcaption class="media-cap"><span class="media-cap-label">via Superbot · Nano Banana 2</span><span class="media-cap-spec">1024×1024</span></figcaption>
-                </figure>
-              </div>
-            </figure>
-            <div class="msg-user"><span class="msg-bubble">Make the app</span></div>
-            <div class="turn-head">
-              <span class="turn-head-avatar"><img src="superbot-favicon.svg" alt="" /></span>
-              <span><span class="turn-head-name">superbot</span><span class="turn-head-meta"> · 6m 32s</span></span>
-            </div>
-            <div class="switch-block">
-              <span class="sb-switch-pill">
-                <span class="sb-switch-tile"><img src="logos/tile-anthropic.png" alt="" /></span>
-                <span class="sb-switch-label">Switched to Claude Opus 5.5</span>
-                <span class="sb-switch-status" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-                <svg class="sb-switch-details-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-              </span>
-            </div>
-            <div class="sb-lines">
-              <span class="sb-line"><span class="sb-line-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><span class="sb-line-verb">Wrote</span> <span class="sb-line-target">175 files</span></span></span>
-              <span class="sb-line"><span class="sb-line-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><span class="sb-line-verb">Ran</span> <span class="sb-line-target">34 commands</span></span></span>
-            </div>
-            <div class="answer"><p>Built Genie, with the first logo as the app icon.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" id="publish" style="--i: 5" aria-label="Free publish preview">
-      <h1 class="headline">Free <span class="grad">publish</span></h1>
-      <div class="phone" data-title="My website">
-        <div class="native desk">
-          <div class="hub-feed" role="log" aria-label="My website">
-            <div class="msg-user"><span class="msg-bubble">Publish my website</span></div>
-            <div class="turn-head">
-              <span class="turn-head-avatar"><img src="superbot-favicon.svg" alt="" /></span>
-              <span><span class="turn-head-name">superbot</span><span class="turn-head-meta"> · 38s</span></span>
-            </div>
-            <div class="sb-lines">
-              <span class="sb-line"><span class="sb-line-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><span class="sb-line-verb">Ran</span> <span class="sb-line-target">3 commands</span></span></span>
-            </div>
-            <div class="answer"><p>Your site is live at <a href="https://genie.superbot.sh">genie.superbot.sh</a>.</p></div>
-            <div class="link-card" role="listitem">
-              <div class="link-media"><img src="shots/genie-site.png" alt="" /></div>
-              <div class="link-text">
-                <p class="link-source"><img src="art/variants/genie-v3-glass.png" alt="" /><span>genie.superbot.sh</span></p>
-                <p class="link-title">Genie: ask the magic 8 ball</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section aria-labelledby="shots-title">
+      <h2 id="shots-title">iPhone screenshots</h2>
+      <ul class="shots">
+        <li><img src="assets/1-direct-answers.png" alt="Direct Answers" width="1290" height="2796" /><p class="meta"><span>1290 × 2796</span><a class="get" href="assets/1-direct-answers.png" download>Download</a></p></li>
+        <li><img src="assets/2-switches-models.png" alt="Switches Models" width="1290" height="2796" /><p class="meta"><span>1290 × 2796</span><a class="get" href="assets/2-switches-models.png" download>Download</a></p></li>
+        <li><img src="assets/3-does-anything.png" alt="Does Anything" width="1290" height="2796" /><p class="meta"><span>1290 × 2796</span><a class="get" href="assets/3-does-anything.png" download>Download</a></p></li>
+        <li><img src="assets/4-your-plans.png" alt="Your Plans" width="1290" height="2796" /><p class="meta"><span>1290 × 2796</span><a class="get" href="assets/4-your-plans.png" download>Download</a></p></li>
+        <li><img src="assets/5-free-publish.png" alt="Free publish" width="1290" height="2796" /><p class="meta"><span>1290 × 2796</span><a class="get" href="assets/5-free-publish.png" download>Download</a></p></li>
+      </ul>
     </section>
   </main>
-
-  <script src="plans.6157abb2.js"></script>
-  <script src="thread.6157abb2.js"></script>
-  <script src="chrome.6157abb2.js"></script>
 </body>
 </html>
