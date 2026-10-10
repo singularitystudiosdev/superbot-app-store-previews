@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Superbot App Store assets</title>
-<link rel="icon" href="assets/favicon.svg" />
-<!-- The published asset set: the App Store header banner and the five
-     iPhone screenshots (purple headline accent), each downloadable, plus
-     one zip of all six. -->
+<title>Superbot App Store pack</title>
+<link rel="icon" href="assets/icon/superbot-app-icon-1024-rounded.png" />
+<!-- The App Store pack: header background, app icon and the five iPhone
+     screenshots at each accepted App Store Connect size, each downloadable
+     at its exact size, plus one zip of everything. -->
 <style>
   :root { color-scheme: light; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,15 +18,20 @@
     -webkit-font-smoothing: antialiased;
   }
   main { max-width: 1500px; margin: 0 auto; padding: 48px 32px 96px; }
-  .top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 32px; }
+  .top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 16px; }
   h1 { font-size: 28px; line-height: 34px; font-weight: 700; letter-spacing: -0.4px; }
-  h2 { margin: 48px 0 16px; font-size: 17px; line-height: 22px; font-weight: 700; }
-  .zip, .get { color: #0066cc; text-decoration: none; font-weight: 600; }
-  .zip { padding: 8px 16px; border-radius: 999px; background: #0071e3; color: #fff; }
+  h2 { margin: 48px 0 4px; font-size: 17px; line-height: 22px; font-weight: 700; }
+  h3 { margin: 24px 0 12px; font-size: 13px; line-height: 18px; font-weight: 600; color: #6e6e73; }
+  .lead { color: #6e6e73; }
+  .zip { padding: 8px 16px; border-radius: 999px; background: #0071e3; color: #fff; text-decoration: none; font-weight: 600; }
   .zip:hover { background: #0077ed; }
+  .get { color: #0066cc; text-decoration: none; font-weight: 600; }
   .get:hover { text-decoration: underline; }
+  .meta { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; font-size: 12px; color: #6e6e73; }
   .header img { display: block; width: 100%; height: auto; border-radius: 12px; }
-  .meta { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; font-size: 13px; color: #6e6e73; }
+  .icons { display: grid; grid-template-columns: repeat(2, minmax(0, 220px)); gap: 32px; }
+  .icons img { display: block; width: 100%; height: auto; border-radius: 22.5%; background: #fff; }
+  .icons .square img { border-radius: 0; }
   .shots { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; list-style: none; }
   .shots img { display: block; width: 100%; height: auto; border-radius: 12.8% / 5.7%; }
   @media (max-width: 900px) { .shots { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -35,24 +40,67 @@
 <body>
   <main>
     <div class="top">
-      <h1>Superbot App Store assets</h1>
-      <a class="zip" href="assets/superbot-app-store-assets.zip" download>Download all (.zip)</a>
+      <div>
+        <h1>Superbot App Store pack</h1>
+        <p class="lead">Every file at the exact size App Store Connect takes.</p>
+      </div>
+      <a class="zip" href="assets/superbot-app-store-pack.zip" download>Download the pack (.zip)</a>
     </div>
 
-    <section class="header" aria-labelledby="header-title">
-      <h2 id="header-title">Header</h2>
-      <img src="assets/superbot-header.png" alt="Superbot App Store header: icon, name, subtitle and Share on a purple sheen" width="3000" height="572" />
-      <p class="meta"><span>superbot-header.png · 3000 × 572</span><a class="get" href="assets/superbot-header.png" download>Download</a></p>
+    <section aria-labelledby="header-title">
+      <h2 id="header-title">Header background</h2>
+      <h3>3000 × 572 · PNG, no alpha</h3>
+      <div class="header">
+        <img src="assets/header/superbot-header-background.png" alt="Purple light sheen on near-black" width="3000" height="572" />
+      </div>
+      <p class="meta"><span>assets/header/superbot-header-background.png</span><a class="get" href="assets/header/superbot-header-background.png" download>Download</a></p>
+    </section>
+
+    <section aria-labelledby="icon-title">
+      <h2 id="icon-title">App icon</h2>
+      <div class="icons">
+        <figure>
+          <img src="assets/icon/superbot-app-icon-1024-rounded.png" alt="Superbot app icon, rounded" width="1024" height="1024" />
+          <h3>Marketing, rounded corners · PNG</h3>
+          <p class="meta"><span>superbot-app-icon-1024-rounded.png</span><a class="get" href="assets/icon/superbot-app-icon-1024-rounded.png" download>Download</a></p>
+        </figure>
+        <figure>
+          <img class="square" src="assets/icon/superbot-app-icon-1024.png" alt="Superbot app icon, square" width="1024" height="1024" />
+          <h3>App Store Connect · 1024 × 1024, square, no alpha</h3>
+          <p class="meta"><span>superbot-app-icon-1024.png</span><a class="get" href="assets/icon/superbot-app-icon-1024.png" download>Download</a></p>
+        </figure>
+      </div>
     </section>
 
     <section aria-labelledby="shots-title">
       <h2 id="shots-title">iPhone screenshots</h2>
+      <p class="lead">The order: Direct Answers, Switches Models, Does Anything, Your Plans, Free publish.</p>
+
+      <h3>iPhone 6.9&#8221; (Dynamic Island) · 1290 × 2796 · the required size, rendered natively</h3>
       <ul class="shots">
-        <li><img src="assets/1-direct-answers.png" alt="Direct Answers" width="1290" height="2796" /><p class="meta"><span>1290 × 2796</span><a class="get" href="assets/1-direct-answers.png" download>Download</a></p></li>
-        <li><img src="assets/2-switches-models.png" alt="Switches Models" width="1290" height="2796" /><p class="meta"><span>1290 × 2796</span><a class="get" href="assets/2-switches-models.png" download>Download</a></p></li>
-        <li><img src="assets/3-does-anything.png" alt="Does Anything" width="1290" height="2796" /><p class="meta"><span>1290 × 2796</span><a class="get" href="assets/3-does-anything.png" download>Download</a></p></li>
-        <li><img src="assets/4-your-plans.png" alt="Your Plans" width="1290" height="2796" /><p class="meta"><span>1290 × 2796</span><a class="get" href="assets/4-your-plans.png" download>Download</a></p></li>
-        <li><img src="assets/5-free-publish.png" alt="Free publish" width="1290" height="2796" /><p class="meta"><span>1290 × 2796</span><a class="get" href="assets/5-free-publish.png" download>Download</a></p></li>
+        <li><img src="assets/screenshots/iphone-6.9in-1290x2796/1-direct-answers.png" alt="Direct Answers" width="1290" height="2796" /><p class="meta"><span>1290 × 2796</span><a class="get" href="assets/screenshots/iphone-6.9in-1290x2796/1-direct-answers.png" download>1</a></p></li>
+        <li><img src="assets/screenshots/iphone-6.9in-1290x2796/2-switches-models.png" alt="Switches Models" width="1290" height="2796" /><p class="meta"><span>1290 × 2796</span><a class="get" href="assets/screenshots/iphone-6.9in-1290x2796/2-switches-models.png" download>2</a></p></li>
+        <li><img src="assets/screenshots/iphone-6.9in-1290x2796/3-does-anything.png" alt="Does Anything" width="1290" height="2796" /><p class="meta"><span>1290 × 2796</span><a class="get" href="assets/screenshots/iphone-6.9in-1290x2796/3-does-anything.png" download>3</a></p></li>
+        <li><img src="assets/screenshots/iphone-6.9in-1290x2796/4-your-plans.png" alt="Your Plans" width="1290" height="2796" /><p class="meta"><span>1290 × 2796</span><a class="get" href="assets/screenshots/iphone-6.9in-1290x2796/4-your-plans.png" download>4</a></p></li>
+        <li><img src="assets/screenshots/iphone-6.9in-1290x2796/5-free-publish.png" alt="Free publish" width="1290" height="2796" /><p class="meta"><span>1290 × 2796</span><a class="get" href="assets/screenshots/iphone-6.9in-1290x2796/5-free-publish.png" download>5</a></p></li>
+      </ul>
+
+      <h3>iPhone 6.9&#8221; (Dynamic Island) · 1320 × 2868 · the largest accepted, rescaled from the 1290 set</h3>
+      <ul class="shots">
+        <li><img src="assets/screenshots/iphone-6.9in-1320x2868/1-direct-answers.png" alt="Direct Answers" width="1320" height="2868" /><p class="meta"><span>1320 × 2868</span><a class="get" href="assets/screenshots/iphone-6.9in-1320x2868/1-direct-answers.png" download>1</a></p></li>
+        <li><img src="assets/screenshots/iphone-6.9in-1320x2868/2-switches-models.png" alt="Switches Models" width="1320" height="2868" /><p class="meta"><span>1320 × 2868</span><a class="get" href="assets/screenshots/iphone-6.9in-1320x2868/2-switches-models.png" download>2</a></p></li>
+        <li><img src="assets/screenshots/iphone-6.9in-1320x2868/3-does-anything.png" alt="Does Anything" width="1320" height="2868" /><p class="meta"><span>1320 × 2868</span><a class="get" href="assets/screenshots/iphone-6.9in-1320x2868/3-does-anything.png" download>3</a></p></li>
+        <li><img src="assets/screenshots/iphone-6.9in-1320x2868/4-your-plans.png" alt="Your Plans" width="1320" height="2868" /><p class="meta"><span>1320 × 2868</span><a class="get" href="assets/screenshots/iphone-6.9in-1320x2868/4-your-plans.png" download>4</a></p></li>
+        <li><img src="assets/screenshots/iphone-6.9in-1320x2868/5-free-publish.png" alt="Free publish" width="1320" height="2868" /><p class="meta"><span>1320 × 2868</span><a class="get" href="assets/screenshots/iphone-6.9in-1320x2868/5-free-publish.png" download>5</a></p></li>
+      </ul>
+
+      <h3>iPhone 6.5&#8221; (Face ID) · 1284 × 2778 · rescaled from the 1290 set</h3>
+      <ul class="shots">
+        <li><img src="assets/screenshots/iphone-6.5in-1284x2778/1-direct-answers.png" alt="Direct Answers" width="1284" height="2778" /><p class="meta"><span>1284 × 2778</span><a class="get" href="assets/screenshots/iphone-6.5in-1284x2778/1-direct-answers.png" download>1</a></p></li>
+        <li><img src="assets/screenshots/iphone-6.5in-1284x2778/2-switches-models.png" alt="Switches Models" width="1284" height="2778" /><p class="meta"><span>1284 × 2778</span><a class="get" href="assets/screenshots/iphone-6.5in-1284x2778/2-switches-models.png" download>2</a></p></li>
+        <li><img src="assets/screenshots/iphone-6.5in-1284x2778/3-does-anything.png" alt="Does Anything" width="1284" height="2778" /><p class="meta"><span>1284 × 2778</span><a class="get" href="assets/screenshots/iphone-6.5in-1284x2778/3-does-anything.png" download>3</a></p></li>
+        <li><img src="assets/screenshots/iphone-6.5in-1284x2778/4-your-plans.png" alt="Your Plans" width="1284" height="2778" /><p class="meta"><span>1284 × 2778</span><a class="get" href="assets/screenshots/iphone-6.5in-1284x2778/4-your-plans.png" download>4</a></p></li>
+        <li><img src="assets/screenshots/iphone-6.5in-1284x2778/5-free-publish.png" alt="Free publish" width="1284" height="2778" /><p class="meta"><span>1284 × 2778</span><a class="get" href="assets/screenshots/iphone-6.5in-1284x2778/5-free-publish.png" download>5</a></p></li>
       </ul>
     </section>
   </main>
